@@ -1,0 +1,1239 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.0.2" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.0.2">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.0.2">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.0.2">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.0.2" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="mobile, web, internet, android, iot" />
+
+
+
+
+
+  <link rel="alternate" href="/feeds/posts/default.xml" title="蓋索林 Gasolin" type="application/atom+xml" />
+
+
+
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="All categories">
+<meta property="og:url" content="https://blog.gasolin.idv.tw/categories/index.html">
+<meta property="og:site_name" content="蓋索林 Gasolin">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2018-03-31T08:09:13.262Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="All categories">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '6.0.2',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/7.1.2/mermaid.min.js"></script>
+<script type="text/javascript">mermaid.initialize({startOnLoad:true});</script>
+
+
+  
+
+
+
+
+  
+  <meta name="keywords" content="python,TurboGears,aglie test," />
+
+
+<meta name="description" content="楔子 自從聽說了敏捷方法 (Agile programming)後, 一直很想試試這種&amp;quot;測試先行&amp;quot;的開發方式. 但是在 python 上前後試過 unitest, doctest, 都不夠&amp;quot;簡單到會想常常拿來用&amp;quot;的程度, 今天拿了一份原型寫得差不多的程式, 試著寫些測試例子 (test case) 後用 nose 測試工具來測試看看, 想不到 nose 還蠻">
+<meta name="keywords" content="python,TurboGears,aglie test">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用 nose 測試工具簡單做測試">
+<meta property="og:url" content="https://blog.gasolin.idv.tw/2007/03/04/使用-nose-測試工具簡單做測試/index.html">
+<meta property="og:site_name" content="蓋索林 Gasolin">
+<meta property="og:description" content="楔子 自從聽說了敏捷方法 (Agile programming)後, 一直很想試試這種&amp;quot;測試先行&amp;quot;的開發方式. 但是在 python 上前後試過 unitest, doctest, 都不夠&amp;quot;簡單到會想常常拿來用&amp;quot;的程度, 今天拿了一份原型寫得差不多的程式, 試著寫些測試例子 (test case) 後用 nose 測試工具來測試看看, 想不到 nose 還蠻">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2018-03-31T08:09:13.250Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="使用 nose 測試工具簡單做測試">
+<meta name="twitter:description" content="楔子 自從聽說了敏捷方法 (Agile programming)後, 一直很想試試這種&amp;quot;測試先行&amp;quot;的開發方式. 但是在 python 上前後試過 unitest, doctest, 都不夠&amp;quot;簡單到會想常常拿來用&amp;quot;的程度, 今天拿了一份原型寫得差不多的程式, 試著寫些測試例子 (test case) 後用 nose 測試工具來測試看看, 想不到 nose 還蠻">
+
+
+
+  <link rel="alternate" href="/feeds/posts/default.xml" title="蓋索林 Gasolin" type="application/atom+xml" />
+
+
+
+
+  <link rel="canonical" href="https://blog.gasolin.idv.tw/2007/03/04/使用-nose-測試工具簡單做測試/"/>
+
+
+  <title>使用 nose 測試工具簡單做測試 | 蓋索林 Gasolin</title>
+  
+
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-2833924-9"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-2833924-9');
+</script>
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> <div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">蓋索林 Gasolin</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">人們總是高估一年可以完成的事，卻低估十年能完成的事</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-home"></i> <br />home</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />archives</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />tags</a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />menu.search</a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="search.placeholder" spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+  
+
+
+
+ </div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+  <link itemprop="mainEntityOfPage" href="https://blog.gasolin.idv.tw/2007/03/04/使用-nose-測試工具簡單做測試/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="gasolin">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/uploads/avatar.jpg">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="蓋索林 Gasolin">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">使用 nose 測試工具簡單做測試</h2>
+              
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+           
+            <span class="post-meta-item-text">post.posted</span>
+           
+              <time title="post.created" itemprop="dateCreated datePublished" datetime="2007-03-04T09:24:14+00:00">2007-03-04</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+
+          <!--custom reading time-->
+          &nbsp; | &nbsp;
+          <span class="post-words">1,257 words,</span> <span class="post-count">7 min. read</span>
+
+          
+            
+          
+
+          
+          
+
+          
+          
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><span style="font-weight: bold;">楔子</span></p>
+<p>自從聽說了敏捷方法 (Agile programming)後, 一直很想試試這種&quot;測試先行&quot;的開發方式.
+但是在 python 上前後試過 unitest, doctest, 都不夠&quot;<span style="font-weight: bold;">簡單到會想常常拿來用</span>&quot;的程度,</p>
+<p>今天拿了一份原型寫得差不多的程式, 試著寫些測試例子 (test case) 後用 nose 測試工具來測試看看, 想不到 nose 還蠻容易使用的.</p>
+<p><span style="font-size:180%;">三步驟使用 nose 開始測試</span></p>
+<p><span style="font-size:130%;">1. 安裝或更新 nose
+</span><span style="font-weight: bold;">#</span> easy_install -U nose</p>
+<p>沒用過 easy_install ? 你該開始試著用了!</p>
+<p><span style="font-size:130%;">2. 撰寫測試例子 (test case)</span>
+打開一個新的資料夾, 我們統一在這個新資料夾裡寫主程式與測試例子</p>
+<p>將要測試的內容寫入 <a href="http://something.py" target="_blank" rel="noopener">something.py</a> 這個檔案[註1]:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&gt; class Hello(object):</span><br><span class="line">&gt;       def  __init__(self):</span><br><span class="line">&gt;            self.template = &quot;hello world&quot;</span><br><span class="line">&gt; </span><br><span class="line">&gt;       def render(self):</span><br><span class="line">&gt;           return self.template</span><br></pre></td></tr></table></figure>
+<p>nose 測試工具識別測試例子的條件, 是判斷找到的這個類別或方法的名稱是不是以&quot;test&quot; 或 &quot;Test&quot;開頭. 如果是的話就當成是測試例子. nose 會自動搜尋子目錄下所有符合的測試例子, 並自動開始測試.</p>
+<p>因此我們第一個範例程式用的測試例子只要是函式名稱用 ‘test’ 開頭來命名就可以囉, 我們命名一個檔案 <a href="http://testsomething.py" target="_blank" rel="noopener">testsomething.py</a> (這個檔案名稱以 test 開頭與識別測試例子的條件並無關聯, 只是慣例上放測試的例子的檔名都會加上 test 字樣), 並在裡面寫下:</p>
+<p><a href="http://testsomething.py" target="_blank" rel="noopener">testsomething.py</a>:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&gt;</span><br><span class="line">&gt;     def test_Hello():</span><br><span class="line">&gt;         abc = Hello()</span><br><span class="line">&gt;         assert &quot;hello&quot; in abc.render()</span><br><span class="line">&gt; </span><br><span class="line">&gt;     def test_foreign():</span><br><span class="line">&gt;         abc = Hello()</span><br><span class="line">&gt;         assert &quot;bonjour&quot; not in abc.render()</span><br></pre></td></tr></table></figure>
+<p>assert 是 nose 用來判斷測試結果的語法. 主要有這兩種:</p>
+<ul>
+<li>
+<p>assert 片段 in “結果”</p>
+</li>
+<li>
+<p>assert 片段 not in &quot;結果&quot;
+對照上面範例, 可以得知上面兩者的意思就是:</p>
+</li>
+<li>
+<p>測試結果&quot;hello&quot;字串應該在 abc.render() 回應的結果裡</p>
+</li>
+<li>
+<p>測試結果&quot;bonjour&quot;字串應該不會在 abc.render() 回應的結果裡如果上面任一種情況不符合 assert 敘述, 這個測試用例就會回報失敗.</p>
+</li>
+</ul>
+<p><span style="font-size:130%;">3. 開始測試
+</span>切換到檔案在的檔案目錄下, 輸入</p>
+<h1>nosetests</h1>
+<p>結果應該類似這個樣子:</p>
+<blockquote>
+<p>D:\path\pyfile&gt;nosetests
+…</p>
+<hr>
+<p>Ran 1 tests in 0.020s</p>
+<p>OK那麼如果我們改動了 <a href="http://something.py" target="_blank" rel="noopener">something.py</a> 中 self.template 變數的內容, 在內容裡加上了 “bonjour” 字樣, 會發生什麼事情呢?</p>
+</blockquote>
+<p>有測試工具的好處就是我們只要單純地再次運行 nosetests 命令就好了, 不用花腦力去判斷或思考:) 我們查看訊息時會看到類似以下的訊息:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&gt; 2, in runTest</span><br><span class="line">&gt; self.testFunc()</span><br><span class="line">&gt; File &quot;D:\path\pyfile\testsomething.py&quot;, line 90, in test_Hello</span><br><span class="line">&gt; assert &quot;bonjour&quot; not in abc.render()</span><br><span class="line">&gt; AssertionError</span><br><span class="line">&gt; -----------------</span><br><span class="line">&gt; Ran 1 tests in 0.030s</span><br><span class="line">&gt; </span><br><span class="line">&gt; FAILED (failures=1, errors=1)</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+<p>上面的報告提醒我們有一件錯誤: &quot;bonjour&quot;字串原本不應該出現在 abc.render() 回應結果中的, 但結果中竟然出現了!</p>
+<p>所以如果我們的測試用例寫的好, 就可以肯定我們剛剛改動 <a href="http://something.py" target="_blank" rel="noopener">something.py</a> 時出了些問題. 測試這件事確實有效!</p>
+<span style="font-weight:bold;">
+較好的約定</span>
+我們已經知道, 只要類別或方法的名稱是以"test" 或 "Test"開頭. 就會被 nose 當成是測試例子, 所以其實在一個小程式中, 我們大可把測試例子跟主程式放在同一個檔案裡. 
+<p>但是當你都還不很確定你在幹什麼的時候, 我建議還是將測試例子跟主程式分開. 這麼做除了程式不容易搞混之外, 在切換檔案時, 還可以順便切換撰寫程式與撰寫測試例子時的不同 MindSet.</p>
+<span style="font-weight:bold;">
+測試驅動</span>
+那麼如果我們想改寫 hello 函式, 好讓它可以用法語"bonjour"打招呼, 我們該怎麼辦? 
+記得"測試先行", 考慮加上一個新的測試例子, 而不影響原本的功能吧!
+<p>加入的測試例子:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&gt;</span><br><span class="line">&gt;     def test_bonjour():</span><br><span class="line">&gt;         abc = Hello(&apos;bonjour&apos;)</span><br><span class="line">&gt;         assert &quot;bonjour&quot; in abc.render()</span><br></pre></td></tr></table></figure>
+<p>接著要做的就是再跑一次 nosetests, 看到這個新的例子跟我們報告錯誤了. OK, 那就開始修改 hello 函式吧![註2]</p>
+<span style="font-weight:bold;">
+其他的測試</span>
+nose 支援的測試的方式琳瑯滿目, 可以使用 "nosetests -h" 命令來查看支援的項目.
+<p>例如另外一個常用的測試方式是使用 doctest:
+<code>nosetests --with-doctest</code></p>
+<p>那麼 doctest 是什麼樣的測試方式?
+又該怎麼使用 doctest 呢? 嘿嘿, 4月 <a href="http://osdc.tw/2007/02/post_7.html" target="_blank" rel="noopener">OSDC.tw 07</a> 再開講囉:D</p>
+<p>====</p>
+<p>我知道這個工具已經快半年了, 到今天才有時間, 勇氣真的下去嘗試.
+讓我白白錯過這樣好用的工具這麼久, 應該怪在 nose 太少文件可以參考的頭上吧?
+乾脆自己來寫個&quot;三步驟使用 nose 開始測試&quot;的簡易文件好了.</p>
+<p>註1: 這篇文章不講怎麼寫 python 程式, 這部份請自理:P
+註2: 同註1, 建議妳逛逛 <a href="http://www.python.org.tw" target="_blank" rel="noopener">www.python.org.tw</a> 可以看到更多參考資料</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/python/" rel="tag"># python</a>
+          
+            <a href="/tags/TurboGears/" rel="tag"># TurboGears</a>
+          
+            <a href="/tags/aglie-test/" rel="tag"># aglie test</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2007/02/28/python-禪學/" rel="next" title="python 禪學">
+                <i class="fa fa-chevron-left"></i> python 禪學
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2007/03/05/Python-社群的-web-框架開發/" rel="prev" title="Python 社群的 web 框架開發">
+                Python 社群的 web 框架開發 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- Go to www.addthis.com/dashboard to customize your tools -->
+<div class="addthis_inline_share_toolbox">
+  <script type = "text/javascript" src = "//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-57da69da7827f70b" async = "async" ></script>
+</div>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            sidebar.toc
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            sidebar.overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/uploads/avatar.jpg"
+                alt="gasolin" />
+            
+              <p class="site-author-name" itemprop="name">gasolin</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">502</span>
+                    <span class="site-state-item-name">state.posts</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    <span class="site-state-item-count">84</span>
+                    <span class="site-state-item-name">state.tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/feeds/posts/default.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="http://www.gasolin.idv.tw" target="_blank" title="HomePage" rel="external nofollow">
+                      
+                        <i class="fa fa-fw fa-home"></i>HomePage</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.github.com/gasolin" target="_blank" title="Github" rel="external nofollow">
+                      
+                        <i class="fa fa-fw fa-github"></i>Github</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://www.slideshare.net/gasolin" target="_blank" title="SlideShare" rel="external nofollow">
+                      
+                        <i class="fa fa-fw fa-slideshare"></i>SlideShare</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.twitter.com/gasolin" target="_blank" title="Twitter" rel="external nofollow">
+                      
+                        <i class="fa fa-fw fa-twitter"></i>Twitter</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://share.readmoo.com/mooer/lifaicqb9/bookshelf/gasolin/total" target="_blank" title="Read" rel="external nofollow">
+                      
+                        <i class="fa fa-fw fa-book"></i>Read</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://movie.douban.com/people/gasolin/" target="_blank" title="Watch" rel="external nofollow">
+                      
+                        <i class="fa fa-fw fa-film"></i>Watch</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://www.mytravelmap.tk/u/gg112695256249584453237" target="_blank" title="Visited" rel="external nofollow">
+                      
+                        <i class="fa fa-fw fa-map-marker"></i>Visited</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://gitcoin.co/tip?username=gasolin" target="_blank" title="Tip Me" rel="external nofollow">
+                      
+                        <i class="fa fa-fw fa-bolt"></i>Tip Me</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+            <div class="cc-license motion-element" itemprop="license">
+              <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank" rel="external nofollow">
+                <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+              </a>
+            </div>
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">nosetests</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2005 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">true</span>
+
+  
+
+  
+</div>
+
+
+  
+
+
+
+  <div class="powered-by">footer.powered</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">footer.theme &mdash; <a class="theme-link" target="_blank" rel="external nofollow" href="https://github.com/theme-next/hexo-theme-next">NexT.Pisces</a> v6.0.2</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.0.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.0.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.0.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.0.2"></script>
+
+
+
+  
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

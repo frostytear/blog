@@ -1,0 +1,1302 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.0.2" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.0.2">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.0.2">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.0.2">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.0.2" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="mobile, web, internet, android, iot" />
+
+
+
+
+
+  <link rel="alternate" href="/feeds/posts/default.xml" title="蓋索林 Gasolin" type="application/atom+xml" />
+
+
+
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="All categories">
+<meta property="og:url" content="https://blog.gasolin.idv.tw/categories/index.html">
+<meta property="og:site_name" content="蓋索林 Gasolin">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2018-03-31T08:09:13.262Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="All categories">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '6.0.2',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/7.1.2/mermaid.min.js"></script>
+<script type="text/javascript">mermaid.initialize({startOnLoad:true});</script>
+
+
+  
+
+
+
+
+  
+  <meta name="keywords" content="ethereum,javascript,solidity," />
+
+
+<meta name="description" content="上一篇中我們已寫好並部署完成了簡單的加密代幣🔒💵合約。在閱讀完本文後，你將學會建立一個可以放到乙太幣錢包👛的加密代幣🔒💵。 開發前的準備 延續上一篇的內容，在開發的過程中，我們將繼續使用testrpc1工具在電腦上模擬智能合約所需的乙太坊區塊鏈測試環境。 首先確保已啟動testrpc。若尚未啟動，可以使用以下命令啟動： $ testrpc... 這邊有個值得一學的小技巧：在啟動testr">
+<meta name="keywords" content="ethereum,javascript,solidity">
+<meta property="og:type" content="article">
+<meta property="og:title" content="如何撰寫智能合約(Smart Contract)?(III)建立標準代幣">
+<meta property="og:url" content="https://blog.gasolin.idv.tw/2017/09/16/howto-write-an-erc20-compatible-token/index.html">
+<meta property="og:site_name" content="蓋索林 Gasolin">
+<meta property="og:description" content="上一篇中我們已寫好並部署完成了簡單的加密代幣🔒💵合約。在閱讀完本文後，你將學會建立一個可以放到乙太幣錢包👛的加密代幣🔒💵。 開發前的準備 延續上一篇的內容，在開發的過程中，我們將繼續使用testrpc1工具在電腦上模擬智能合約所需的乙太坊區塊鏈測試環境。 首先確保已啟動testrpc。若尚未啟動，可以使用以下命令啟動： $ testrpc... 這邊有個值得一學的小技巧：在啟動testr">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2018-03-31T08:09:13.246Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="如何撰寫智能合約(Smart Contract)?(III)建立標準代幣">
+<meta name="twitter:description" content="上一篇中我們已寫好並部署完成了簡單的加密代幣🔒💵合約。在閱讀完本文後，你將學會建立一個可以放到乙太幣錢包👛的加密代幣🔒💵。 開發前的準備 延續上一篇的內容，在開發的過程中，我們將繼續使用testrpc1工具在電腦上模擬智能合約所需的乙太坊區塊鏈測試環境。 首先確保已啟動testrpc。若尚未啟動，可以使用以下命令啟動： $ testrpc... 這邊有個值得一學的小技巧：在啟動testr">
+
+
+
+  <link rel="alternate" href="/feeds/posts/default.xml" title="蓋索林 Gasolin" type="application/atom+xml" />
+
+
+
+
+  <link rel="canonical" href="https://blog.gasolin.idv.tw/2017/09/16/howto-write-an-erc20-compatible-token/"/>
+
+
+  <title>如何撰寫智能合約(Smart Contract)?(III)建立標準代幣 | 蓋索林 Gasolin</title>
+  
+
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-2833924-9"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-2833924-9');
+</script>
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> <div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">蓋索林 Gasolin</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">人們總是高估一年可以完成的事，卻低估十年能完成的事</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-home"></i> <br />home</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />archives</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />tags</a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />menu.search</a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="search.placeholder" spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+  
+
+
+
+ </div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+  <link itemprop="mainEntityOfPage" href="https://blog.gasolin.idv.tw/2017/09/16/howto-write-an-erc20-compatible-token/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="gasolin">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/uploads/avatar.jpg">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="蓋索林 Gasolin">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">如何撰寫智能合約(Smart Contract)?(III)建立標準代幣</h2>
+              
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+           
+            <span class="post-meta-item-text">post.posted</span>
+           
+              <time title="post.created" itemprop="dateCreated datePublished" datetime="2017-09-16T09:35:31+00:00">2017-09-16</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+
+          <!--custom reading time-->
+          &nbsp; | &nbsp;
+          <span class="post-words">1,846 words,</span> <span class="post-count">10 min. read</span>
+
+          
+            
+          
+
+          
+          
+
+          
+          
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><a href="https://blog.gasolin.idv.tw/2017/09/11/howto-write-a-simple-token/">上一篇</a>中我們已寫好並部署完成了簡單的加密代幣🔒💵合約。在閱讀完本文後，你將學會建立一個可以放到乙太幣錢包👛的加密代幣🔒💵。</p>
+<h2 id="開發前的準備">開發前的準備</h2>
+<p>延續上一篇的內容，在開發的過程中，我們將繼續使用<code>testrpc</code><sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup>工具在電腦上模擬智能合約所需的乙太坊區塊鏈測試環境。</p>
+<p>首先確保已啟動testrpc。若尚未啟動，可以使用以下命令啟動：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">$ testrpc</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p>這邊有個值得一學的小技巧：在啟動testrpc時加上<code>--seed</code>參數，例如</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">testrpc --seed apple banana cherry</span><br></pre></td></tr></table></figure>
+<p>這樣之後重新啟動testrpc時可以產生一樣的帳號(accounts)和私鑰(private key)。</p>
+<h2 id="erc20標準">ERC20標準</h2>
+<p>建立的代幣若要能透過乙太幣錢包👛來收送，必須相容於以太坊的ERC20標準<sup id="fnref:2"><a href="#fn:2" rel="footnote">2</a></sup>。ERC20標準定義了支援錢包所必須的合約介面。</p>
+<p>本篇將使用<code>OpenZeppelin</code><sup id="fnref:2"><a href="#fn:2" rel="footnote">2</a></sup>函式庫來簡化建立加密代幣🔒💵的過程。<code>OpenZeppelin</code>是一套協助撰寫安全的加密合約的函式庫，裡面也提供了相容ERC20標準的智能合約。可以透過npm工具安裝到專案目錄<code>node_modules/zeppelin-solodity/</code>中：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">$ npm install zeppelin-solidity</span><br></pre></td></tr></table></figure>
+<p>準備完成，我們可以開始建立新的加密代幣智能合約了。</p>
+<h2 id="建立一個標準代幣合約">建立一個標準代幣合約</h2>
+<p>在<code>contracts/</code>目錄下建立一個<code>HelloToken.sol</code>檔案。也可以使用以下命令來產生檔案：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">$ truffle create contract HelloToken</span><br></pre></td></tr></table></figure>
+<p><code>HelloToken.sol</code>檔案內容如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pragma solidity ^0.4.11;</span><br><span class="line">import &quot;zeppelin-solidity/contracts/token/StandardToken.sol&quot;;</span><br><span class="line"></span><br><span class="line">contract HelloToken is StandardToken &#123;</span><br><span class="line">  string public name = &quot;HelloCoin&quot;;</span><br><span class="line">  string public symbol = &quot;H@&quot;;</span><br><span class="line">  uint8 public decimals = 2;</span><br><span class="line">  uint256 public INITIAL_SUPPLY = 88888;</span><br><span class="line"></span><br><span class="line">  function HelloToken() public &#123;</span><br><span class="line">    totalSupply = INITIAL_SUPPLY;</span><br><span class="line">    balances[msg.sender] = INITIAL_SUPPLY;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="講解">講解</h3>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pragma solidity ^0.4.11;</span><br></pre></td></tr></table></figure>
+<p>第一行指名目前使用的solidity版本，不同版本的solidity可能會編譯出不同的bytecode。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import &quot;zeppelin-solidity/contracts/token/StandardToken.sol&quot;;</span><br></pre></td></tr></table></figure>
+<p>接著我們使用<code>import</code>語句，來讀入<code>zeppelin-solidity</code>提供的<code>StandardToken</code>合約。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">contract HelloToken is StandardToken &#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>建立<code>HelloToken</code>合約時，使用<code>is</code>語句繼承了<a href="https://github.com/OpenZeppelin/zeppelin-solidity/blob/master/contracts/token/StandardToken.sol" target="_blank" rel="noopener">StandardToken</a>合約。因此<code>HelloToken</code>合約繼承了<code>StandardToken</code>合約所包含的資料與呼叫方法。</p>
+<p>當我們繼承了<code>StandardToken</code>合約，也就支援了以下 ERC-20 標準中<sup id="fnref:2"><a href="#fn:2" rel="footnote">2</a></sup>規定的函式</p>
+<table>
+<thead>
+<tr>
+<th>函式</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>totalSupply()</td>
+<td>代幣發行的總量</td>
+</tr>
+<tr>
+<td>balanceOf(A)</td>
+<td>查詢A帳戶下的代幣數目</td>
+</tr>
+<tr>
+<td>transfer(A,x)</td>
+<td>傳送x個代幣到A帳戶</td>
+</tr>
+<tr>
+<td>transferFrom(A,x)</td>
+<td>從A帳戶提取x個代幣</td>
+</tr>
+<tr>
+<td>approve(A,x)</td>
+<td>同意A帳戶從我的帳戶中提取代幣</td>
+</tr>
+<tr>
+<td>allowance(A,B)</td>
+<td>查詢B帳戶可以從A帳戶提取多少代幣</td>
+</tr>
+</tbody>
+</table>
+<p>和前一篇一樣，後面驗證時會用到<code>balanceOf</code>和<code>transfer</code>兩個函式。因為<code>StandardToken</code>合約中已經幫我們實做了這些函式，因此我們不需要自己從頭再寫一次。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">string public name = &quot;HelloCoin&quot;;</span><br><span class="line">string public symbol = &quot;H@&quot;;</span><br><span class="line">uint8 public decimals = 2;</span><br><span class="line">uint256 public INITIAL_SUPPLY = 100000;</span><br></pre></td></tr></table></figure>
+<p>這邊設定參數的目的是指定這個代幣的一些特性。以美元為例，美元的名稱(<code>name</code>)是<code>dollar</code>，美元的代號為<code>$</code>，拿一美元去找零最小可以拿到零錢是一美分(cent)，也就是0.01元。因為一美元最小可分割到小數點後2位(0.01)，因此最小交易單位(decimals)為2。</p>
+<p>這邊將這個加密代幣取名(name)為<code>HelloCoin</code>(哈囉幣)，代幣的代號(symbol)為<code>H@</code>，最小分割單位是2(最小可以找0.01個哈囉幣)。</p>
+<p>以下為美金，比特幣，以太幣，哈囉幣的對照表供參考：</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Symbol</th>
+<th>decimals</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Dollar</td>
+<td>$</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Bitcoin</td>
+<td>BTC</td>
+<td>8</td>
+</tr>
+<tr>
+<td>Ethereum</td>
+<td>ETH</td>
+<td>18</td>
+</tr>
+<tr>
+<td>HelloCoin</td>
+<td>H@</td>
+<td>2</td>
+</tr>
+</tbody>
+</table>
+<p>最後也定義了初始代幣數目<code>INITIAL_SUPPLY</code>為<code>100000</code>。當我們把全域變數設為<code>public</code>(公開)，編譯時就會自動新增一個讀取公開變數的ABI接口，我們在<code>truffle console</code>中也可以讀取這些變數。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">function HelloToken() public &#123;</span><br><span class="line">  totalSupply = INITIAL_SUPPLY;</span><br><span class="line">  balances[msg.sender] = INITIAL_SUPPLY;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>和合約同名的<code>HelloToken</code>方法，就是<code>HelloToken</code>合約的建構函式(constructor)。
+在建構式裡指定了<code>totalSupply</code>數目，並將所有的初始代幣<code>INITIAL_SUPPLY</code>都指定給<code>msg.sender</code>帳號，也就是用來部署這個合約的帳號。‵<code>totalSupply</code>定義於<a href="https://github.com/OpenZeppelin/zeppelin-solidity/blob/master/contracts/token/ERC20Basic.sol#L10" target="_blank" rel="noopener">ERC20Basic.sol</a>中，<code>balances</code>定義於<a href="https://github.com/OpenZeppelin/zeppelin-solidity/blob/master/contracts/token/BasicToken.sol#L15" target="_blank" rel="noopener">BasicToken.sol</a>中。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import &apos;../math/SafeMath.sol&apos;;</span><br><span class="line">...</span><br><span class="line">using SafeMath for uint256;</span><br><span class="line">...</span><br><span class="line">balances[msg.sender] = balances[msg.sender].sub(_value);</span><br></pre></td></tr></table></figure>
+<p>進一步追去看<a href="https://github.com/OpenZeppelin/zeppelin-solidity/blob/master/contracts/token/BasicToken.sol" target="_blank" rel="noopener">BasicToken.sol</a>合約的內容，可以發現<code>BasicToken.sol</code>合約中匯入了<code>SafeMath.sol</code>合約<sup id="fnref:7"><a href="#fn:7" rel="footnote">7</a></sup>。<code>SafeMath</code>對各種數值運算加入了必要的驗證，讓合約中的數字計算更安全。</p>
+<p>如此一來，我們已寫好一個可透過以太幣錢包交易的新加密代幣🔒💵合約。如果將這個合約部署到乙太坊公開區塊鍊上，這個代幣合約就會一直存在，世界上從此也就多了一種新的加密代幣。只要你能找到人想擁有這種代幣，這種代幣就有交易的價值。</p>
+<h3 id="編譯與部署">編譯與部署</h3>
+<p>在<code>migrations/</code>目錄下建立一個<code>4_deploy_hellotoken.js</code>檔案，內容如下：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> HelloToken = artifacts.require(<span class="string">"HelloToken"</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = <span class="function"><span class="keyword">function</span>(<span class="params">deployer</span>) </span>&#123;</span><br><span class="line">  deployer.deploy(HelloToken);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>現在執行compile與migrate命令</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">$ truffle compile</span><br><span class="line">...</span><br><span class="line">$ truffle migrate --reset</span><br><span class="line">Using network <span class="string">'development'</span>.</span><br><span class="line"></span><br><span class="line">Running migration: 4_deploy_hellotoken.js</span><br><span class="line">  Deploying HelloToken...</span><br><span class="line">  ... 0x2c4659528c68b4e43d1edff6c989fba05e8e7e56cc4085d408426d339b4e9ba4</span><br><span class="line">  HelloToken: 0x352fa9aa18106f269d944935503afe57a00a9a0d</span><br><span class="line">Saving successful migration to network...</span><br><span class="line">  ... 0x1434c1b61e9719f410fc6090ce37c0ec141a1738aba278dd320738e4a5d229fa</span><br><span class="line">Saving artifacts...</span><br></pre></td></tr></table></figure>
+<p>如此一來我們已將HelloCoin代幣合約部署到testrpc上。</p>
+<h2 id="驗證">驗證</h2>
+<p>我們一樣可以透過<code>truffle console</code>來驗證<code>HelloToken</code>是否部署成功。</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">$ truffle console</span><br><span class="line">&gt; <span class="built_in">let</span> contract</span><br><span class="line">&gt; HelloToken.deployed().<span class="keyword">then</span>(instance =&gt; contract = instance)</span><br><span class="line">&gt; contract.address</span><br><span class="line"><span class="string">'0x352fa9aa18106f269d944935503afe57a00a9a0d'</span></span><br><span class="line">&gt; contract.balanceOf(web3.eth.coinbase)</span><br><span class="line">BigNumber &#123; s: 1, e: 5, c: [ 100000 ] &#125;</span><br><span class="line">&gt; contract.balanceOf(web3.eth.accounts[1])</span><br><span class="line">BigNumber &#123; s: 1, e: 0, c: [ 0 ] &#125;</span><br><span class="line">&gt; contract.transfer(web3.eth.accounts[1], 123)</span><br><span class="line">...</span><br><span class="line">&gt; contract.balanceOf(web3.eth.accounts[0])</span><br><span class="line">BigNumber &#123; s: 1, e: 4, c: [ 99877 ] &#125;</span><br><span class="line">&gt; contract.balanceOf(web3.eth.accounts[1])</span><br><span class="line">BigNumber &#123; s: 1, e: 2, c: [ 123 ] &#125;</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="講解-v2">講解</h3>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">&gt; <span class="built_in">let</span> contract</span><br><span class="line">&gt; SimpleToken.deployed().<span class="keyword">then</span>(instance =&gt; contract = instance)</span><br></pre></td></tr></table></figure>
+<p>這邊使用<code>HelloToken.deployed().then</code>語句來取得HelloToken合約的Instance(實例)，並存到<code>contract</code>變數中，以方便後續的呼叫。</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">&gt; contract.balanceOf(web3.eth.coinbase)</span><br><span class="line">BigNumber &#123; s: 1, e: 5, c: [ 100000 ] &#125;</span><br><span class="line">&gt; contract.balanceOf(web3.eth.accounts[1])</span><br><span class="line">BigNumber &#123; s: 1, e: 0, c: [ 0 ] &#125;</span><br></pre></td></tr></table></figure>
+<p><code>web3.eth.coinbase</code> 代表操作者預設的帳號，即testrpc所提供的10個帳號中的第一個帳號，也可以透過<code>web3.eth.accounts[0]</code>取得。
+這兩句的目的是在進行轉帳操作前，先查詢前兩個帳號所擁有的代幣餘額。透過呼叫<code>balanceOf</code>函式，可以看到第一個帳號(部署合約的帳號)裡存著所有的代幣。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&gt; contract.transfer(web3.eth.accounts[1], 123)</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p>接著使用<code>transfer</code>函式來傳送<code>123</code>個代幣到第二個帳號<code>web3.eth.accounts[1]</code>。如果轉帳成功，傳送者預設帳號中會減少<code>123</code>個代幣，接收者帳號中會增加<code>123</code>個代幣。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&gt; contract.balanceOf(web3.eth.accounts[0])</span><br><span class="line">BigNumber &#123; s: 1, e: 4, c: [ 99877 ] &#125;</span><br><span class="line">&gt; contract.balanceOf(web3.eth.accounts[1])</span><br><span class="line">BigNumber &#123; s: 1, e: 2, c: [ 123 ] &#125;</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+<p>我們再次透過呼叫<code>balanceOf</code>函式，查詢傳送者帳號和接收者帳號各自剩下的HelloToken數目。發現轉帳真的成功了。</p>
+<h2 id="結語">結語</h2>
+<p>我們用到 <code>OpenZeppelin</code>提供的函式庫來簡化撰寫加密代幣合約的工作。要實際投入使用前，還是建議將呼叫到的程式碼都再審查幾遍。可以從 OpenZeppelin 自己提供的Audit開始看<sup id="fnref:4"><a href="#fn:4" rel="footnote">4</a></sup>，可以學到一些觀念。</p>
+<h2 id="參考資料">參考資料</h2>
+<ul>
+<li>[1] <a href="https://github.com/ethereumjs/testrpc" target="_blank" rel="noopener">https://github.com/ethereumjs/testrpc</a></li>
+<li>[2] ERC20 <a href="https://theethereum.wiki/w/index.php/ERC20_Token_Standard" target="_blank" rel="noopener">https://theethereum.wiki/w/index.php/ERC20_Token_Standard</a> 或 <a href="https://github.com/ethereum/EIPs/blob/master/EIPS/eip-20-token-standard.md" target="_blank" rel="noopener">https://github.com/ethereum/EIPs/blob/master/EIPS/eip-20-token-standard.md</a></li>
+<li>[3] OpenZeppelin <a href="https://github.com/OpenZeppelin/zeppelin-solidity" target="_blank" rel="noopener">https://github.com/OpenZeppelin/zeppelin-solidity</a></li>
+<li>[4] OpenZeppelin Audit <a href="https://github.com/OpenZeppelin/zeppelin-solidity/blob/master/audit/ZeppelinAudit.md" target="_blank" rel="noopener">https://github.com/OpenZeppelin/zeppelin-solidity/blob/master/audit/ZeppelinAudit.md</a></li>
+<li>[5] An Ethereum Hello World Smart Contract for Beginners part 1 <a href="http://www.talkcrypto.org/blog/2017/04/17/an-ethereum-hello-world-smart-contract-for-beginners-part-1/" target="_blank" rel="noopener">http://www.talkcrypto.org/blog/2017/04/17/an-ethereum-hello-world-smart-contract-for-beginners-part-1/</a></li>
+<li>[6] <a href="http://www.talkcrypto.org/blog/2017/04/22/an-ethereum-hello-world-smart-contract-for-beginners-part-2/" target="_blank" rel="noopener">http://www.talkcrypto.org/blog/2017/04/22/an-ethereum-hello-world-smart-contract-for-beginners-part-2/</a></li>
+<li>[7] OpenZeppelin <a href="https://github.com/OpenZeppelin/zeppelin-solidity/blob/master/contracts/math/SafeMath.sol" target="_blank" rel="noopener">SafeMath 合約</a></li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/ethereum/" rel="tag"># ethereum</a>
+          
+            <a href="/tags/javascript/" rel="tag"># javascript</a>
+          
+            <a href="/tags/solidity/" rel="tag"># solidity</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/09/11/howto-write-a-simple-token/" rel="next" title="如何撰寫智能合約(Smart Contract)?(II)建立加密代幣">
+                <i class="fa fa-chevron-left"></i> 如何撰寫智能合約(Smart Contract)?(II)建立加密代幣
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/10/25/xps13-elementary-os/" rel="prev" title="Dual boot Elementary OS & Windows 10 on XPS 13 (9360)">
+                Dual boot Elementary OS & Windows 10 on XPS 13 (9360) <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- Go to www.addthis.com/dashboard to customize your tools -->
+<div class="addthis_inline_share_toolbox">
+  <script type = "text/javascript" src = "//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-57da69da7827f70b" async = "async" ></script>
+</div>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            sidebar.toc
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            sidebar.overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/uploads/avatar.jpg"
+                alt="gasolin" />
+            
+              <p class="site-author-name" itemprop="name">gasolin</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">502</span>
+                    <span class="site-state-item-name">state.posts</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    <span class="site-state-item-count">84</span>
+                    <span class="site-state-item-name">state.tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/feeds/posts/default.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="http://www.gasolin.idv.tw" target="_blank" title="HomePage" rel="external nofollow">
+                      
+                        <i class="fa fa-fw fa-home"></i>HomePage</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.github.com/gasolin" target="_blank" title="Github" rel="external nofollow">
+                      
+                        <i class="fa fa-fw fa-github"></i>Github</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://www.slideshare.net/gasolin" target="_blank" title="SlideShare" rel="external nofollow">
+                      
+                        <i class="fa fa-fw fa-slideshare"></i>SlideShare</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.twitter.com/gasolin" target="_blank" title="Twitter" rel="external nofollow">
+                      
+                        <i class="fa fa-fw fa-twitter"></i>Twitter</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://share.readmoo.com/mooer/lifaicqb9/bookshelf/gasolin/total" target="_blank" title="Read" rel="external nofollow">
+                      
+                        <i class="fa fa-fw fa-book"></i>Read</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://movie.douban.com/people/gasolin/" target="_blank" title="Watch" rel="external nofollow">
+                      
+                        <i class="fa fa-fw fa-film"></i>Watch</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://www.mytravelmap.tk/u/gg112695256249584453237" target="_blank" title="Visited" rel="external nofollow">
+                      
+                        <i class="fa fa-fw fa-map-marker"></i>Visited</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://gitcoin.co/tip?username=gasolin" target="_blank" title="Tip Me" rel="external nofollow">
+                      
+                        <i class="fa fa-fw fa-bolt"></i>Tip Me</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+            <div class="cc-license motion-element" itemprop="license">
+              <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank" rel="external nofollow">
+                <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+              </a>
+            </div>
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#開發前的準備"><span class="nav-number">1.</span> <span class="nav-text">開發前的準備</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#erc20標準"><span class="nav-number">2.</span> <span class="nav-text">ERC20標準</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#建立一個標準代幣合約"><span class="nav-number">3.</span> <span class="nav-text">建立一個標準代幣合約</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#講解"><span class="nav-number">3.1.</span> <span class="nav-text">講解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#編譯與部署"><span class="nav-number">3.2.</span> <span class="nav-text">編譯與部署</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#驗證"><span class="nav-number">4.</span> <span class="nav-text">驗證</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#講解-v2"><span class="nav-number">4.1.</span> <span class="nav-text">講解</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#結語"><span class="nav-number">5.</span> <span class="nav-text">結語</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#參考資料"><span class="nav-number">6.</span> <span class="nav-text">參考資料</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2005 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">true</span>
+
+  
+
+  
+</div>
+
+
+  
+
+
+
+  <div class="powered-by">footer.powered</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">footer.theme &mdash; <a class="theme-link" target="_blank" rel="external nofollow" href="https://github.com/theme-next/hexo-theme-next">NexT.Pisces</a> v6.0.2</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.0.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.0.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.0.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.0.2"></script>
+
+
+
+  
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

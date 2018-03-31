@@ -1,0 +1,1175 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.0.2" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.0.2">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.0.2">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.0.2">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.0.2" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="mobile, web, internet, android, iot" />
+
+
+
+
+
+  <link rel="alternate" href="/feeds/posts/default.xml" title="蓋索林 Gasolin" type="application/atom+xml" />
+
+
+
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="All categories">
+<meta property="og:url" content="https://blog.gasolin.idv.tw/categories/index.html">
+<meta property="og:site_name" content="蓋索林 Gasolin">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2018-03-31T08:09:13.262Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="All categories">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '6.0.2',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/7.1.2/mermaid.min.js"></script>
+<script type="text/javascript">mermaid.initialize({startOnLoad:true});</script>
+
+
+  
+
+
+
+
+  
+  <meta name="keywords" content="javascript," />
+
+
+<meta name="description" content="We (Fred Lin &amp;amp; Ray Lin) have ported Github’s popular chat robot framework &apos;Hubot’ from Coffeescript to plain Javascript with ES6 features. Currently I name it webbybot to denote ES6 version of hu">
+<meta name="keywords" content="javascript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="How we ported Hubot from Coffeescript to ES6">
+<meta property="og:url" content="https://blog.gasolin.idv.tw/2016/03/14/How-we-ported-Hubot-from-Coffeescript-to-ES6/index.html">
+<meta property="og:site_name" content="蓋索林 Gasolin">
+<meta property="og:description" content="We (Fred Lin &amp;amp; Ray Lin) have ported Github’s popular chat robot framework &apos;Hubot’ from Coffeescript to plain Javascript with ES6 features. Currently I name it webbybot to denote ES6 version of hu">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://farm1.staticflickr.com/91/210333714_cccff3a76f.jpg">
+<meta property="og:updated_time" content="2018-03-31T08:09:13.234Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="How we ported Hubot from Coffeescript to ES6">
+<meta name="twitter:description" content="We (Fred Lin &amp;amp; Ray Lin) have ported Github’s popular chat robot framework &apos;Hubot’ from Coffeescript to plain Javascript with ES6 features. Currently I name it webbybot to denote ES6 version of hu">
+<meta name="twitter:image" content="https://farm1.staticflickr.com/91/210333714_cccff3a76f.jpg">
+
+
+
+  <link rel="alternate" href="/feeds/posts/default.xml" title="蓋索林 Gasolin" type="application/atom+xml" />
+
+
+
+
+  <link rel="canonical" href="https://blog.gasolin.idv.tw/2016/03/14/How-we-ported-Hubot-from-Coffeescript-to-ES6/"/>
+
+
+  <title>How we ported Hubot from Coffeescript to ES6 | 蓋索林 Gasolin</title>
+  
+
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-2833924-9"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-2833924-9');
+</script>
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> <div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">蓋索林 Gasolin</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">人們總是高估一年可以完成的事，卻低估十年能完成的事</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-home"></i> <br />home</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />archives</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />tags</a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />menu.search</a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="search.placeholder" spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+  
+
+
+
+ </div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+  <link itemprop="mainEntityOfPage" href="https://blog.gasolin.idv.tw/2016/03/14/How-we-ported-Hubot-from-Coffeescript-to-ES6/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="gasolin">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/uploads/avatar.jpg">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="蓋索林 Gasolin">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">How we ported Hubot from Coffeescript to ES6</h2>
+              
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+           
+            <span class="post-meta-item-text">post.posted</span>
+           
+              <time title="post.created" itemprop="dateCreated datePublished" datetime="2016-03-14T01:04:42+00:00">2016-03-14</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+
+          <!--custom reading time-->
+          &nbsp; | &nbsp;
+          <span class="post-words">762 words,</span> <span class="post-count">5 min. read</span>
+
+          
+            
+          
+
+          
+          
+
+          
+          
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><a href="https://www.flickr.com/photos/franzbrandtwein/210333714/in/photolist-jA1Tm-7zsdd5-c3S9RY-6nV3Rp-96h4Vx-of3ttt-38gqh7-gmHXQv-dVEbJF-7E2T3H-HtFB3-robohy-druZRm-nrF4vh-HtFAN-7Dk3uW-pkMp7E-qpn51r-67WHcz-dmkogt-AkVdM-951oFH-af6bdQ-igcWis-bw1gLG-6ZkGsP-r3KjtA-aojgSy-qXYEst-ckHzAN-97rv7G-qfi5f6-bu6G96-4mdWDR-62fyWi-qgcVh4-89o3px-8AKiYq-Xb2wh-5K91Q3-rwerig-i19QiK-7jGYc7-2Pc3VK-bNBoUp-9RDmqK-9iEDUt-kb1z7K-dwYP4H-pN2djS" title="Hubo" target="_blank" rel="noopener"><img src="https://farm1.staticflickr.com/91/210333714_cccff3a76f.jpg" alt="Hubo"></a><script async charset="utf-8" src="//embedr.flickr.com/assets/client-code.js"></script></p>
+<p>We (Fred Lin &amp; Ray Lin) have ported Github’s popular chat robot framework '<a href="https://github.com/github/hubot" target="_blank" rel="noopener">Hubot’</a> from Coffeescript to plain Javascript with ES6 features. Currently I name it <a href="https://github.com/gasolin/webbybot" target="_blank" rel="noopener"><strong>webbybot</strong></a> to denote ES6 version of hubot, to better test the port result and avoid the naming confusion with the original hubot.</p>
+<p>Now webbybot is fully functional and still support all coffeescript written plugins.
+If you have an existing bot generated by  hubot-generator, you can install webbybot via <code>npm install webbybot</code> command, follow <a href="https://github.com/gasolin/webbybot#how-to-replace-hubot-to-webbybot" target="_blank" rel="noopener">with simple instruction</a> and see your bot works smoothly with webbybot core.</p>
+<p>(For experienced developer, the instruction guide you to replace script in  generated ‘/bin’ folder from ‘hubot’ to ‘webby’. And change the adapter  library import from ‘hubot’ to ‘webbybot’.)</p>
+<p>As time goes to 2016, there’re less reason to use <a href="http://coffeescript.org/" target="_blank" rel="noopener">Coffeescript</a> instead of standard ES6 Javascript. During the porting we do learned something that might helpful for your projects.</p>
+<p><strong>1. Use npm script directly instead of gulp or grunt</strong></p>
+<p>With npm we can define some scripts directly in the ‘script’ attribution of ‘package.json’ file. Webbybot use ‘npm run build’ command to compile ES6 to plain javascript via <a href="http://babeljs.io/" target="_blank" rel="noopener">Babel</a>. Do style checking via ‘npm run lint’ command.</p>
+<p><strong>2. Use babel directly instead of webpack</strong></p>
+<p>At the beginning we count on <a href="https://webpack.github.io/" target="_blank" rel="noopener">webpack</a>’s babel-loader to convert ES6 to plain javascript. Alas its a beginning of ‘Try and Error’ journey. Webpack is originally designed for front-end packaging and works very well on that purpose. But for backend program like webbybot that feature is not important for us. Webpack also bring ‘require’ keyword to the front-end, but its not suit for backend program that depends on dynamic import. As a framework, hubot heavily counts on NODE require to load plugins. Webpack treat all ‘require’ as its keyword and try hard in vain to find external modules from packed files.</p>
+<p>We tried several ways to detour these side effects, and finally replaced the full webpack stack with <a href="https://github.com/gasolin/webbybot/blob/master/package.json#L10" target="_blank" rel="noopener">one line npm build script</a>. Now its easier to debug and no hacks needed in source code.</p>
+<p><strong>3. return or not return, its the question</strong></p>
+<p>We use the  “Try Coffeescript” utility provide form <a href="http://coffeescript.org/" target="_blank" rel="noopener">Coffeescript</a> official site, which you can paste Coffeescript the page will convert the source to Javascript instantly.
+The converted code is… not all pretty for human read, and all converted functions will contain a return statement even its unnecessary. It needs check by hand.</p>
+<p><strong>4. test cases matter</strong></p>
+<div dir="ltr">Hubot itself contains good coverage of unit tests. So we are able to test one ported script file with one ported test file when we start the porting. The unit test files contain great number of redundant return sentences when convert from coffeescript.</div><div dir="ltr">
+</div>
+<p><strong>5. class and super</strong></p>
+<p>Hubot use Class syntax from Coffeescript。Thanksfully ES6 support the Class syntax, which is a bit different from Coffeescript. You can check how to use Class and super on <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes" target="_blank" rel="noopener">MDN.</a></p>
+<p><strong>6. Default + rest + spread</strong></p>
+<p>Hubot contain several syntax like ‘reply(strings…)’. The syntax ‘strings…’ in Coffeescript is correspondent to “…strings” in ES6（The order of ‘…’ is reversed）.
+’…strings’ denotes an array and I feel its a bit hard to figure out when to expand it or not.</p>
+<p><strong>7. for…of instead of for…in</strong></p>
+<p>To use for…in loop in ES6, we need add ‘hasOwnProperty’ check to make sure inherited property are not looped. Or we can rewrite for…in loop in Coffeescript to forEach iteration. Though there are some cases that need ‘break’ or ‘return’ from a loop.</p>
+<p>Now we use ES6 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...of" target="_blank" rel="noopener">for…of loop</a> in Webbybot to replace forEach and for…in loop. You need wrap object with Object.keys syntax to iterate with object. ex: <code>for (let item of Object.keys(TargetObj)) {...}</code>.</p>
+<p><strong>8. Object.assign instead of Extend</strong></p>
+<p>We can use <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign" target="_blank" rel="noopener">Object.assign</a> to extend a object without handmade extend function or lodash!</p>
+<p><strong>9. Do you know hubot also <a href="https://github.com/gasolin/webbybot/blob/master/src/robot.js#L404" target="_blank" rel="noopener">support write plugin with plain javascript</a>?</strong></p>
+<p>Learning how chat bot works is the main reason we start porting hubot to ES6!
+A simple plain javascript plugin could be as easy as: (src/simple.js)</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&gt; module.exports = function(robot) &#123;</span><br><span class="line">&gt; &amp;nbsp; robot.respond(/(hello)/i, function(res) &#123;</span><br><span class="line">&gt; &amp;nbsp; &amp;nbsp; res.send(&apos;hi&apos;); </span><br><span class="line">&gt; &amp;nbsp; &#125;);</span><br><span class="line">&gt; &#125;You can put it in generated plugin folder and it will just work.</span><br></pre></td></tr></table></figure>
+<p>I’ve created a <a href="https://github.com/github/hubot/issues/1138" target="_blank" rel="noopener">ticket on hubot issue list</a> to start a discussion if hubot would like to go with ES6 in its future version.</p>
+<p>The webbybot source is at<a href="https://github.com/gasolin/webbybot" target="_blank" rel="noopener"> https://github.com/gasolin/webbybot</a></p>
+<p>Do you have a project ported from coffeescript to ES6? Welcome to drop by your thoughts.</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/javascript/" rel="tag"># javascript</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/03/14/將聊天機器人框架-hubot-從-Coffescript-移植到-ES6/" rel="next" title="將聊天機器人框架 hubot 從 Coffescript 移植到 ES6">
+                <i class="fa fa-chevron-left"></i> 將聊天機器人框架 hubot 從 Coffescript 移植到 ES6
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/04/07/Setup-a-skype-chatbot-on-Respberry-pi-with-4GB-SD-Card/" rel="prev" title="Setup a skype chatbot on Respberry pi with 4GB SD Card">
+                Setup a skype chatbot on Respberry pi with 4GB SD Card <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- Go to www.addthis.com/dashboard to customize your tools -->
+<div class="addthis_inline_share_toolbox">
+  <script type = "text/javascript" src = "//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-57da69da7827f70b" async = "async" ></script>
+</div>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/uploads/avatar.jpg"
+                alt="gasolin" />
+            
+              <p class="site-author-name" itemprop="name">gasolin</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">502</span>
+                    <span class="site-state-item-name">state.posts</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    <span class="site-state-item-count">84</span>
+                    <span class="site-state-item-name">state.tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/feeds/posts/default.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="http://www.gasolin.idv.tw" target="_blank" title="HomePage" rel="external nofollow">
+                      
+                        <i class="fa fa-fw fa-home"></i>HomePage</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.github.com/gasolin" target="_blank" title="Github" rel="external nofollow">
+                      
+                        <i class="fa fa-fw fa-github"></i>Github</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://www.slideshare.net/gasolin" target="_blank" title="SlideShare" rel="external nofollow">
+                      
+                        <i class="fa fa-fw fa-slideshare"></i>SlideShare</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.twitter.com/gasolin" target="_blank" title="Twitter" rel="external nofollow">
+                      
+                        <i class="fa fa-fw fa-twitter"></i>Twitter</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://share.readmoo.com/mooer/lifaicqb9/bookshelf/gasolin/total" target="_blank" title="Read" rel="external nofollow">
+                      
+                        <i class="fa fa-fw fa-book"></i>Read</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://movie.douban.com/people/gasolin/" target="_blank" title="Watch" rel="external nofollow">
+                      
+                        <i class="fa fa-fw fa-film"></i>Watch</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://www.mytravelmap.tk/u/gg112695256249584453237" target="_blank" title="Visited" rel="external nofollow">
+                      
+                        <i class="fa fa-fw fa-map-marker"></i>Visited</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://gitcoin.co/tip?username=gasolin" target="_blank" title="Tip Me" rel="external nofollow">
+                      
+                        <i class="fa fa-fw fa-bolt"></i>Tip Me</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+            <div class="cc-license motion-element" itemprop="license">
+              <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank" rel="external nofollow">
+                <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+              </a>
+            </div>
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2005 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">true</span>
+
+  
+
+  
+</div>
+
+
+  
+
+
+
+  <div class="powered-by">footer.powered</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">footer.theme &mdash; <a class="theme-link" target="_blank" rel="external nofollow" href="https://github.com/theme-next/hexo-theme-next">NexT.Pisces</a> v6.0.2</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.0.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.0.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.0.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.0.2"></script>
+
+
+
+  
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

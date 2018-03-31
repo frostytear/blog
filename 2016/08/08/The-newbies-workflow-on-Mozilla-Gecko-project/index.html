@@ -1,0 +1,1236 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.0.2" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.0.2">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.0.2">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.0.2">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.0.2" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="mobile, web, internet, android, iot" />
+
+
+
+
+
+  <link rel="alternate" href="/feeds/posts/default.xml" title="蓋索林 Gasolin" type="application/atom+xml" />
+
+
+
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="All categories">
+<meta property="og:url" content="https://blog.gasolin.idv.tw/categories/index.html">
+<meta property="og:site_name" content="蓋索林 Gasolin">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2018-03-31T08:09:13.262Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="All categories">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '6.0.2',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/7.1.2/mermaid.min.js"></script>
+<script type="text/javascript">mermaid.initialize({startOnLoad:true});</script>
+
+
+  
+
+
+
+
+  
+  <meta name="keywords" content="Mozilla," />
+
+
+<meta name="description" content="As our recent development focus shifting from Firefox OS to Firefox, we need to contribute to gecko repository directly instead of contributing to Gaia repository on Github. The most of the works are">
+<meta name="keywords" content="Mozilla">
+<meta property="og:type" content="article">
+<meta property="og:title" content="The newbie&#39;s workflow on Mozilla Gecko project">
+<meta property="og:url" content="https://blog.gasolin.idv.tw/2016/08/08/The-newbies-workflow-on-Mozilla-Gecko-project/index.html">
+<meta property="og:site_name" content="蓋索林 Gasolin">
+<meta property="og:description" content="As our recent development focus shifting from Firefox OS to Firefox, we need to contribute to gecko repository directly instead of contributing to Gaia repository on Github. The most of the works are">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2018-03-31T08:09:13.242Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="The newbie&#39;s workflow on Mozilla Gecko project">
+<meta name="twitter:description" content="As our recent development focus shifting from Firefox OS to Firefox, we need to contribute to gecko repository directly instead of contributing to Gaia repository on Github. The most of the works are">
+
+
+
+  <link rel="alternate" href="/feeds/posts/default.xml" title="蓋索林 Gasolin" type="application/atom+xml" />
+
+
+
+
+  <link rel="canonical" href="https://blog.gasolin.idv.tw/2016/08/08/The-newbies-workflow-on-Mozilla-Gecko-project/"/>
+
+
+  <title>The newbie's workflow on Mozilla Gecko project | 蓋索林 Gasolin</title>
+  
+
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-2833924-9"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-2833924-9');
+</script>
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> <div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">蓋索林 Gasolin</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">人們總是高估一年可以完成的事，卻低估十年能完成的事</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-home"></i> <br />home</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />archives</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />tags</a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />menu.search</a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="search.placeholder" spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+  
+
+
+
+ </div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+  <link itemprop="mainEntityOfPage" href="https://blog.gasolin.idv.tw/2016/08/08/The-newbies-workflow-on-Mozilla-Gecko-project/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="gasolin">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/uploads/avatar.jpg">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="蓋索林 Gasolin">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">The newbie's workflow on Mozilla Gecko project</h2>
+              
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+           
+            <span class="post-meta-item-text">post.posted</span>
+           
+              <time title="post.created" itemprop="dateCreated datePublished" datetime="2016-08-08T22:35:24+00:00">2016-08-09</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+
+          <!--custom reading time-->
+          &nbsp; | &nbsp;
+          <span class="post-words">907 words,</span> <span class="post-count">6 min. read</span>
+
+          
+            
+          
+
+          
+          
+
+          
+          
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>As our recent development focus shifting from Firefox OS to Firefox, we need to contribute to gecko repository directly instead of contributing to Gaia repository on Github.
+The most of the works are related to Javascript. The main change is the workflow and API difference.  In Gaia we work between Bugzilla and Github; In gecko, we have Bugzilla and mozReview.</p>
+<p>Once you have setup the environment, the workflow could also be based on git(or hg), and most things are dealt automatically.
+Mozilla is a pretty open workplace so that I can share my workflow with the world. Here is a reference to how I did for per patch/weekly/per setup/one-time workflow.</p>
+<h2 id="do-it-one-time">Do it One time</h2>
+<p>To become a mozilla committer, read <a href="https://www.mozilla.org/en-US/about/governance/policies/commit/" target="_blank" rel="noopener">https://www.mozilla.org/en-US/about/governance/policies/commit/</a></p>
+<p>Create Bugzilla API key<a href="https://bugzilla.mozilla.org/userprefs.cgi?tab=apikey" target="_blank" rel="noopener">https://bugzilla.mozilla.org/userprefs.cgi?tab=apikey</a>
+and ssh key <a href="https://login.mozilla.com/ssh_keys_index" target="_blank" rel="noopener">https://login.mozilla.com/ssh_keys_index</a></p>
+<h2 id="do-at-every-setup">Do at every Setup</h2>
+<p>You may check MDN as a start point, with Developer Guide <a href="https://developer.mozilla.org/en-US/docs/Mozilla/Developer_guide" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Mozilla/Developer_guide</a> and especially the source code page
+<a href="https://developer.mozilla.org/en-US/docs/Mozilla/Developer_guide/Source_Code" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Mozilla/Developer_guide/Source_Code</a></p>
+<p>I will do the setup flow every time I got a new laptop.</p>
+<h3 id="1-update-git">1. Update git</h3>
+<p>Use the <a href="https://launchpad.net/%7Egit-core/+archive/ubuntu/ppa" target="_blank" rel="noopener">PPA</a> from the maintainers of <code>git</code> on Ubuntu:</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">$ sudo apt-add-repository ppa:git-core/ppa</span><br><span class="line">$ sudo apt-get update</span><br><span class="line">$ sudo apt-get install git</span><br></pre></td></tr></table></figure>
+<h3 id="2-install-git-cinnabar">2. Install git-cinnabar</h3>
+<p>Gecko itself managed via mercurial, we need install <a href="https://github.com/glandium/git-cinnabar" target="_blank" rel="noopener">git-cinnabar</a> to help us deal with mercurial codebase via git.Check <a href="http://mozilla-version-control-tools.readthedocs.org/en/latest/mozreview/install-git.html#mozreview-install-git" target="_blank" rel="noopener">http://mozilla-version-control-tools.readthedocs.org/en/latest/mozreview/install-git.html#mozreview-install-git</a> `<a href="https://github.com/glandium/git-cinnabar/wiki/Mozilla:-A-git-workflow-for-Gecko-development" target="_blank" rel="noopener"></a></p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">$ sudo apt-get install mercurial</span><br><span class="line">$ git <span class="built_in">clone</span> https://github.com/glandium/git-cinnabar.git</span><br></pre></td></tr></table></figure>
+<p>Then set git-cinnabar into system PATH,</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">$ gedit ~/.bashrc</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:absolute_path_to/git-cinnabar</span><br></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">$ . ~/.bashrc</span><br></pre></td></tr></table></figure>
+<p>And do <code>git cinnabar download</code> to get the faster helper.</p>
+<p>Then follow `<a href="https://github.com/glandium/git-cinnabar/wiki/Mozilla:-A-git-workflow-for-Gecko-development" target="_blank" rel="noopener">Mozilla: A git workflow for Gecko development</a> to checkout gecko via git.</p>
+<p>Make sure you follow the Firefox build guide <a href="https://developer.mozilla.org/en-US/docs/Mozilla/Developer_guide/Build_Instructions/Simple_Firefox_build" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Mozilla/Developer_guide/Build_Instructions/Simple_Firefox_build</a> to setup Firefox build environment.</p>
+<p>You can <code>install style check related libraries via the following command:</code></p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">$ ./mach eslint --setup</span><br></pre></td></tr></table></figure>
+<p>You may want install mozreview which improves the overall experience of review with Bugzilla<a href="http://mozilla-version-control-tools.readthedocs.org/en/latest/mozreview/install.html" target="_blank" rel="noopener"> http://mozilla-version-control-tools.readthedocs.org/en/latest/mozreview/install.html</a><code></code></p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">$ ./mach mercurial-setup</span><br></pre></td></tr></table></figure>
+<p>Will clone <code>version-control-tools</code> into <code>~/.mozbuild/version-control-tools</code>. We need update system PATH</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">$ gedit ~/.bashrc</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:absolute_path_to/git-cinnabar:/path/to/.mozbuild/version-control-tools/git/commands</span><br></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">$ . ~/.bashrc</span><br><span class="line">$ git config --global bz.username gasolin@example.com</span><br><span class="line">$ git config --global bz.apikey [your bugzilla key]</span><br><span class="line">$ git config --global mozreview.nickname gasolin</span><br><span class="line">$ git mozreview configure</span><br></pre></td></tr></table></figure>
+<p>Then, run bootstrap script to install required build environment,</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">$ ./mach bootstrap</span><br></pre></td></tr></table></figure>
+<p>Then, <strong>the most time-saving advice</strong>: setup mozconfig for <a href="https://developer.mozilla.org/en-US/docs/Mozilla/Developer_guide/Build_Instructions/Artifact_builds" target="_blank" rel="noopener">artifact builds</a> if possible. When you only work for front-end related work (non c++), Artifact build will download compiled platform code to save you lots of build time.</p>
+<h2 id="weekly-workflow">Weekly workflow</h2>
+<p>Previously build takes more time, I usually do the following command only twice a week if necessary. But now we can use artifact build, which is pretty fast and can be done many times a day.</p>
+<p>We need update Gecko repository regularly:</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">$ git remote update</span><br></pre></td></tr></table></figure>
+<p>Then merge recent updates into current repo with</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ git rebase central/default</span><br></pre></td></tr></table></figure>
+<p>Checkout a new bug and then rebuild the stack,</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">$ ./mach build</span><br></pre></td></tr></table></figure>
+<p>The command will compile the whole gecko.</p>
+<h2 id="per-patch-workflow">Per patch workflow</h2>
+<p>When I work on a new bug, I’ll checkout a new branch (on mac)</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">$ git checkout -b bugxxxxxxx central/branches/default/tip</span><br></pre></td></tr></table></figure>
+<p>or (on Ubuntu)</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">$ git checkout -b bugxxxxxxx mozilla/central</span><br></pre></td></tr></table></figure>
+<p>Usually, the bug is focused on a component of gecko, such as <code>browser/components/customizableui</code>. To make .js/.jsm changes work, we don’t need to rebuild gecko. But to make some C++ code or new test code works, we need to rebuild this part of source via</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">$ ./mach build browser/components/customizableui</span><br></pre></td></tr></table></figure>
+<p>Once we have some progress for the patch, we can test code via the command:</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">$ ./mach <span class="built_in">test</span> browser/components/customizableui/<span class="built_in">test</span></span><br></pre></td></tr></table></figure>
+<p>You need to make sure you’ve followed the JS code style <a href="https://wiki.mozilla.org/DevTools/CodingStandards#Code_style" target="_blank" rel="noopener">https://wiki.mozilla.org/DevTools/CodingStandards#Code_style </a>and CSS code style <a href="https://wiki.mozilla.org/Firefox/CSS_Tips" target="_blank" rel="noopener">https://wiki.mozilla.org/Firefox/CSS_Tips</a>. Do the eslint test before commit to make sure the patch does not contain some obvious syntax error.</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">$ ./mach eslint browser/components/customizableui/<span class="built_in">test</span></span><br></pre></td></tr></table></figure>
+<p>Once the patch is ready, commit it as normal git commit, with a <a href="http://mozilla-version-control-tools.readthedocs.org/en/latest/mozreview/commits.html#mozreview-commits" target="_blank" rel="noopener">structured syntax</a>:
+<code>Bug xxxxxxx - description. ;r=?reviewer_bugzilla_alias</code>.</p>
+<p>Then, use git mozreview command to push the commit onto Bugzilla for review.</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">$ git mozreview push</span><br></pre></td></tr></table></figure>
+<p>You can use try chooser<a href="http://trychooser.pub.build.mozilla.org/" target="_blank" rel="noopener"> http://trychooser.pub.build.mozilla.org/</a> to select test suites that run automatically on the test server. Treeherder is Mozilla’s test server hosted on AWS (Amazon Web Service). Push code there and everyone will have the same base to validate if your code works well on anyone’s computer.</p>
+<p>The reference try script (credit from :Gijs) for <code>browser/component</code> is</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">try: -b od -t none -p win32,win64,macosx64,linux,linux64,linux64-asan -u mochitest-bc,mochitest-e10s-bc,marionette,marionette-e10s</span><br></pre></td></tr></table></figure>
+<p>You can manipulate the script based on what you need to test.</p>
+<h2 id="if-you-like-to-file-a-bug">If you like to file a bug</h2>
+<ul>
+<li>Assign priorities when filing new bugs that you’re going to work on in the component.</li>
+</ul>
+<h2 id="reference">Reference</h2>
+<ul>
+<li><a href="https://sny.no/2016/03/geckogit" target="_blank" rel="noopener">https://sny.no/2016/03/geckogit</a></li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Mozilla/" rel="tag"># Mozilla</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/07/03/upload-360photo-to-facebook/" rel="next" title="使用手機上傳 360 圖片到 Facebook">
+                <i class="fa fa-chevron-left"></i> 使用手機上傳 360 圖片到 Facebook
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/08/24/聊天機器人一份，不加咖啡/" rel="prev" title="聊天機器人一份，不加咖啡">
+                聊天機器人一份，不加咖啡 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- Go to www.addthis.com/dashboard to customize your tools -->
+<div class="addthis_inline_share_toolbox">
+  <script type = "text/javascript" src = "//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-57da69da7827f70b" async = "async" ></script>
+</div>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            sidebar.toc
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            sidebar.overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/uploads/avatar.jpg"
+                alt="gasolin" />
+            
+              <p class="site-author-name" itemprop="name">gasolin</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">502</span>
+                    <span class="site-state-item-name">state.posts</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    <span class="site-state-item-count">84</span>
+                    <span class="site-state-item-name">state.tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/feeds/posts/default.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="http://www.gasolin.idv.tw" target="_blank" title="HomePage" rel="external nofollow">
+                      
+                        <i class="fa fa-fw fa-home"></i>HomePage</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.github.com/gasolin" target="_blank" title="Github" rel="external nofollow">
+                      
+                        <i class="fa fa-fw fa-github"></i>Github</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://www.slideshare.net/gasolin" target="_blank" title="SlideShare" rel="external nofollow">
+                      
+                        <i class="fa fa-fw fa-slideshare"></i>SlideShare</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.twitter.com/gasolin" target="_blank" title="Twitter" rel="external nofollow">
+                      
+                        <i class="fa fa-fw fa-twitter"></i>Twitter</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://share.readmoo.com/mooer/lifaicqb9/bookshelf/gasolin/total" target="_blank" title="Read" rel="external nofollow">
+                      
+                        <i class="fa fa-fw fa-book"></i>Read</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://movie.douban.com/people/gasolin/" target="_blank" title="Watch" rel="external nofollow">
+                      
+                        <i class="fa fa-fw fa-film"></i>Watch</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://www.mytravelmap.tk/u/gg112695256249584453237" target="_blank" title="Visited" rel="external nofollow">
+                      
+                        <i class="fa fa-fw fa-map-marker"></i>Visited</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://gitcoin.co/tip?username=gasolin" target="_blank" title="Tip Me" rel="external nofollow">
+                      
+                        <i class="fa fa-fw fa-bolt"></i>Tip Me</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+            <div class="cc-license motion-element" itemprop="license">
+              <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank" rel="external nofollow">
+                <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+              </a>
+            </div>
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#do-it-one-time"><span class="nav-number">1.</span> <span class="nav-text">Do it One time</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#do-at-every-setup"><span class="nav-number">2.</span> <span class="nav-text">Do at every Setup</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-update-git"><span class="nav-number">2.1.</span> <span class="nav-text">1. Update git</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-install-git-cinnabar"><span class="nav-number">2.2.</span> <span class="nav-text">2. Install git-cinnabar</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#weekly-workflow"><span class="nav-number">3.</span> <span class="nav-text">Weekly workflow</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#per-patch-workflow"><span class="nav-number">4.</span> <span class="nav-text">Per patch workflow</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#if-you-like-to-file-a-bug"><span class="nav-number">5.</span> <span class="nav-text">If you like to file a bug</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#reference"><span class="nav-number">6.</span> <span class="nav-text">Reference</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2005 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">true</span>
+
+  
+
+  
+</div>
+
+
+  
+
+
+
+  <div class="powered-by">footer.powered</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">footer.theme &mdash; <a class="theme-link" target="_blank" rel="external nofollow" href="https://github.com/theme-next/hexo-theme-next">NexT.Pisces</a> v6.0.2</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.0.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.0.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.0.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.0.2"></script>
+
+
+
+  
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
